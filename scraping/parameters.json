@@ -1,0 +1,65 @@
+{
+  "url_params": {
+    "year": 2024,
+    "shooting_urls": {
+      "base": "https://fbref.com/en/comps/Big5/shooting/players/Big-5-European-Leagues-Stats",
+      "urls": "https://fbref.com/en/comps/Big5/{pprvy}-{prvy}/shooting/players/{pprvy}-{prvy}-Big-5-European-Leagues-Stats"
+    },
+    "defensive_urls": {
+      "base": "https://fbref.com/en/comps/Big5/defense/squads/Big-5-European-Leagues-Stats",
+      "urls": "https://fbref.com/en/comps/Big5/{pprvy}-{prvy}/defense/squads/{pprvy}-{prvy}-Big-5-European-Leagues-Stats"
+    },
+    "passing_urls": {
+      "opp_passing_urls": {
+      "base": "https://fbref.com/en/comps/Big5/passing/squads/Big-5-European-Leagues-Stats",
+      "urls": "https://fbref.com/en/comps/Big5/{pprvy}-{prvy}/passing/squads/{pprvy}-{prvy}-Big-5-European-Leagues-Stats"
+      }
+    },
+    "transfers_urls": "https://www.transfermarkt.com/{league}/transfers/wettbewerb/{lg}/plus/?saison_id={season}&s_w=&leihe=1&intern=0&intern=1"
+  },
+  "data_paths": {
+    "temp_data": "data/temp_data/",
+    "temp_shoot_data": "shooting_data{season}.csv",
+    "temp_shoot_schema": "shooting_schema{season}.json",
+    "temp_def_data": "defensive_data{season}.csv",
+    "temp_def_schema": "defensive_data{season}.json",
+    "temp_opp_data": "op_pass{season}.csv",
+    "temp_opp_schema": "op_pass_schema{season}.json",
+    "shooting": {
+      "csv": "data/shooting_data/sd.csv",
+      "schema": "data/shooting_data/sd_schema.json"
+    },
+    "defensive": {
+      "csv": "data/defensive_data/dd_2009_2024.csv",
+      "schema": "data/defensive_data/dd_2009_2024_schema.json"
+    },
+    "op_pass": {
+      "csv": "data/op_pass_data/op_pass.csv",
+      "schema": "data/op_pass_data/op_pass_schema.json"
+    },
+    "transfers": {
+      "csv": "data/transfers_data/trd_2009_2024.csv",
+      "schema": "data/transfers_data/trd_2009_24_schema.json"
+    }
+  },
+  "table_ids": {
+    "shooting": "stats_shooting",
+    "defensive": "stats_teams_defense_for",
+    "op_passing": "stats_teams_passing_against"
+  },
+  "transfers": {
+    "leagues": {
+      "laliga": "ES1",
+      "bundesliga": "L1",
+      "serie-a": "IT1",
+      "premier-league": "GB1",
+      "ligue-1": "FR1"
+    },
+
+    "seasons_range": {
+      "start_yr": 2009,
+      "end_yr": 2024
+    }
+  }
+}
+
