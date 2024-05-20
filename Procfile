@@ -1,1 +1,1 @@
-api/app.py
+flask run
