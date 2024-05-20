@@ -6,11 +6,12 @@ import re
 import json
 import random
 import sys
+import os
 
 
 def generate_tfr_urls(params, start_yr):
     if start_yr == None:
-        start_yr = params['url_params']['year']- 1
+        start_yr = params['url_params']['year'] - 1
     end_yr = params['transfers']['seasons_range']['end_yr']
     seasons = [yr for yr in range(start_yr, end_yr)]
     leagues = params['transfers']['leagues']
@@ -28,7 +29,7 @@ def scrape_transfers(params, start_yr=None):
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36 OPR/38.0.2220.41"
     }
 
-    urls = generate_tfr_urls(start_yr)
+    urls = generate_tfr_urls(params, start_yr)
     print(urls)
     for url in urls[:1]:
         print(f'scraping {url}')
@@ -51,12 +52,13 @@ def scrape_transfers(params, start_yr=None):
             soup = BeautifulSoup(str(tables), 'html.parser')
             target_tables = soup.find_all('table')
             # open csv file
-            csv_file_path = f'{params['temp_data']}/{league}_{season}_team_transfer.csv'
-            with open(csv_file_path, 'w', newline='', encoding='utf-8') as csv_file:
+            csv_file_path = f'{params['data_paths']['temp_data']}/{league}_{season}_team_transfer.csv'
+            base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+            path = os.path.join(base_path, csv_file_path)
 
+            with open(path, 'w', newline='', encoding='utf-8') as csv_file:
                 # Create a CSV writer object
                 csv_writer = csv.writer(csv_file)
-
                 # write the table header
                 headers = [col.text.strip() for col in target_tables[0].find('thead').find('tr').find_all('th')]
 
@@ -88,6 +90,4 @@ def scrape_transfers(params, start_yr=None):
 
 
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == 'scrape_transfers':
-        scrape_transfers()
+

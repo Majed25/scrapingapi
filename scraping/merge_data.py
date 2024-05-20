@@ -27,6 +27,7 @@ def write_data(params, csv_path, schema_path=None, return_data=False):
         df = pd.read_csv(file)
         data_frames.append(df)
     concatenated_df = pd.concat(data_frames, ignore_index=True, sort=False)
+    concatenated_df_json = concatenated_df.to_json()
     for path in schema_paths:
         with open(path, 'r') as file:
             current_schema = json.load(file)
@@ -34,7 +35,7 @@ def write_data(params, csv_path, schema_path=None, return_data=False):
             schema = current_schema
 
     if return_data:
-        return {'data': concatenated_df, 'schema': schema}
+        return {'data': concatenated_df_json, 'schema': schema}
 
     ensure_directories([csv_path, schema_path])
     base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -49,15 +50,18 @@ def write_data(params, csv_path, schema_path=None, return_data=False):
 
 
 def clear_temp_data(params):
-    shutil.rmtree(f'{params["data_paths"]["temp_data"]}')
-    os.makedirs(f'{params["data_paths"]["temp_data"]}')
+    temp_data_path = f'{params["data_paths"]["temp_data"]}'
+    base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    path = os.path.join(base_path, temp_data_path)
+    shutil.rmtree(path)
+    os.makedirs(path)
 
 def merge_data(data_type, params, return_data=False):
     data = params['data_paths'][data_type]['csv']
     schema = params['data_paths'][data_type]['schema']
     ensure_directories([data, schema])
     result = write_data(params, data, schema, return_data)
-    #clear_temp_data(params)
+    clear_temp_data(params)
     if return_data:
         return result
 

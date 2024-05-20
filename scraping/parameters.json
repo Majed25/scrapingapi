@@ -37,7 +37,7 @@
       "csv": "data/op_pass_data/op_pass.csv",
       "schema": "data/op_pass_data/op_pass_schema.json"
     },
-    "transfers": {
+    "tfr": {
       "csv": "data/transfers_data/trd_2009_2024.csv",
       "schema": "data/transfers_data/trd_2009_24_schema.json"
     }

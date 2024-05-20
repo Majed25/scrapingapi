@@ -14,8 +14,8 @@ function_dict = {
 params = load_params()
 
 def main():
-    #get_shooting_data(params)
-    merge_data('shooting',params)
+    scrape_transfers(params)
+    merge_data('tfr',params)
 
 
 if __name__ == '__main__':
