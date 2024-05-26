@@ -27,7 +27,7 @@ def write_data(params, csv_path, schema_path=None, return_data=False):
         df = pd.read_csv(file)
         data_frames.append(df)
     concatenated_df = pd.concat(data_frames, ignore_index=True, sort=False)
-    concatenated_df_json = concatenated_df.to_json(orient='records')
+    concatenated_df_json = concatenated_df.to_json()
     for path in schema_paths:
         with open(path, 'r') as file:
             current_schema = json.load(file)
