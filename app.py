@@ -24,8 +24,7 @@ def process_data(data_type):
     params = load_params()  # Load parameters
     function_dict[data_type](params)
     data = merge_data(data_type, params, return_data=True)
-    return jsonify({'My Table ': data['data']}), 200
-
+    return jsonify({'data_table': data['data']}), 200
 
 
 
