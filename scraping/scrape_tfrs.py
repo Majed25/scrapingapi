@@ -31,7 +31,7 @@ def scrape_transfers(params, start_yr=None):
 
     urls = generate_tfr_urls(params, start_yr)
     print(urls)
-    for url in urls[:1]:
+    for url in urls:
         print(f'scraping {url}')
         html_content = requests.get(url,headers=req_headers)
         season = re.findall(r'\d{4}', url)[0]
