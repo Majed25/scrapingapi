@@ -18,13 +18,12 @@
     "transfers_urls": "https://www.transfermarkt.com/{league}/transfers/wettbewerb/{lg}/plus/?saison_id={season}&s_w=&leihe=1&intern=0&intern=1"
   },
   "data_paths": {
-    "temp_data": "data/temp_data/",
-    "temp_shoot_data": "shooting_data{season}.csv",
-    "temp_shoot_schema": "shooting_schema{season}.json",
-    "temp_def_data": "defensive_data{season}.csv",
-    "temp_def_schema": "defensive_data{season}.json",
-    "temp_opp_data": "op_pass{season}.csv",
-    "temp_opp_schema": "op_pass_schema{season}.json",
+    "temp_shoot_data": "data/temp_data/shooting_data{season}.csv",
+    "temp_shoot_schema": "data/temp_data/shooting_schema{season}.json",
+    "temp_def_data": "data/temp_data/defensive_data{season}.csv",
+    "temp_def_schema": "data/temp_data/defensive_data{season}.json",
+    "temp_opp_data": "data/temp_data/op_pass{season}.csv",
+    "temp_opp_schema": "data/temp_data/op_pass_schema{season}.json",
     "shooting": {
       "csv": "data/shooting_data/sd.csv",
       "schema": "data/shooting_data/sd_schema.json"
